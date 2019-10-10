@@ -28,11 +28,24 @@ const obtenerClima = function(latitud, longitud, data, callback) {
       const info = {
         summary: data.currently.summary,
         temperature: data.currently.temperature,
-        precipProbability: data.currently.precipProbability
+        precipProbability: data.currently.precipProbability,
+        precipType: data.currently.precipType,
+        humidity: data.currently.humidity,
+        alerts: data.alerts
       }
 
-      let resultado = info.summary + ' durante el dia. Actualmente esta a ' + info.temperature + ' C. Hay una ' + info.precipProbability + ' % de posibilidad de lluvia.'
+      let resultado = info.summary + ' durante el dia. Actualmente esta a ' + info.temperature +
+      ' C. Hay una ' + info.precipProbability + ' % de posibilidad de precipitacion de tipo ' + info.precipType +
+      '\n Hay una humedad de ' + info.humidity
       console.log(resultado)
+
+
+
+      if (info.alerts) {
+        console.log('Alertas de clima en la zona')
+      } else {
+        console.log('No hay alertas de clima en esta zona')
+      }
 
   })
 }
